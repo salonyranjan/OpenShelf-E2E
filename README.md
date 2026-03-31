@@ -1,3 +1,11 @@
+## 📚 OpenShelf E2E
+An End-to-End Book Recommender System using Collaborative Filtering 🔥
+
+OpenShelf E2E is a full-stack machine learning application that provides personalized book recommendations. By analyzing user-item interaction patterns, the system identifies "latent" similarities between readers to suggest their next favorite book.
+
+## 🚀 Overview
+Traditional search engines rely on keywords. OpenShelf uses Collaborative Filtering, meaning it understands that if User A and User B both enjoyed The Hobbit, User A might also enjoy other books User B has rated highly
+
 # End-to-End-Book-Recommender-System
 
 ## Workflow
@@ -115,3 +123,7 @@ docker pull entbappy/stapp
 
 
 
+=======
+# OpenShelf-E2E
+🚀 Core Logic: Collaborative Filtering (Memory-based &amp; Model-based) 🛠️ Stack: Python, Pandas, Scikit-Learn, Flask/Streamlit 📊 Objective: To solve the "Discovery Problem" in digital libraries by identifying latent patterns in user behavior. Includes data preprocessing, similarity matrix computation, and a responsive UI.
+>>>>>>> a5a8c41b525cfe3cf71457e928e12d60134eb274
