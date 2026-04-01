@@ -56,3 +56,56 @@ ML Libraries: Scikit-learn, Pandas, NumPy
 Frontend: Streamlit (Custom Cyber-Neon Horizon Theme)
 
 Deployment: GitHub Actions & Streamlit Cloud
+# ☁️ AWS & Docker: Production Deployment Guide
+
+[cite_start]This guide details the process of containerizing the **OpenShelf AI Recommender** and deploying it to an **AWS EC2** instance. [cite_start]This ensures high availability for the **Cyber-Neon** dashboard beyond local development.
+
+---
+
+## 🏗️ Step 1: AWS Environment Setup
+1.  [cite_start]**Launch Instance**: Deploy an **EC2 Instance** (Ubuntu AMI recommended) via the AWS Console.
+2.  [cite_start]**Security Group**: Ensure **Port 8501** is open in the Inbound Rules to allow Streamlit traffic.
+
+## 🛠️ Step 2: Server Configuration & Docker Installation
+Connect to your instance via SSH and execute the following system preparation:
+
+```bash
+# Update and upgrade the system
+sudo apt-get update -y && sudo apt-get upgrade -y 
+
+# Install Docker using the official convenience script
+curl -fsSL [https://get.docker.com](https://get.docker.com) -o get-docker.sh 
+sudo sh get-docker.sh 
+
+# Configure permissions for the 'ubuntu' user
+sudo usermod -aG docker ubuntu 
+newgrp docker
+```
+## 🚀 Step 3: Project Deployment
+### 1. Clone & Build
+```bash
+git clone [https://github.com/salonyranjan/OpenShelf-E2E.git](https://github.com/salonyranjan/OpenShelf-E2E.git) 
+docker build -t salonyranjan/openshelf:latest .
+```
+### 2. Launch Container (Port Mapping 8501)
+```bash
+# Running in detached mode (-d) with port 8501 mapped
+docker run -d -p 8501:8501 salonyranjan/openshelf
+```
+## 📊 Container Management
+
+View active containers: docker ps 
+
+
+Stop deployment: docker stop <container_id> 
+
+
+Prune all containers: docker rm $(docker ps -a -q) 
+
+## 📡 Registry Management (Docker Hub)
+To persist the image for scaling, use the following registry commands:
+
+```bash
+docker login 
+docker push salonyranjan/openshelf:latest
+```
